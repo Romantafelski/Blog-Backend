@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const session = require('express-session')
 const Blog = require('./models/blog.js')
+const User = require('./models/users.js')
 const userController = require('./controllers/users_controller.js')
 const sessionsController = require('./controllers/sessions_controller.js')
 require('dotenv').config()
