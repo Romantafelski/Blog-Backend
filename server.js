@@ -4,6 +4,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const session = require('express-session')
 const Blog = require('./models/blog.js')
 const userController = require('./controllers/users_controller.js')
 const sessionsController = require('./controllers/sessions_controller.js')
@@ -32,6 +33,22 @@ const MONGODB_URI = process.env.MONGODB_URI;
 // May or may not need these depending on your Mongoose version
 mongoose.connect(MONGODB_URI);
 
+
+app.use(
+    session({
+        secret: 'secretidhere', //a random string do not copy this value or your stuff will get hacked
+        resave: false, // default more info: https://www.npmjs.com/package/express-session#resave
+        saveUninitialized: false // default  more info: https://www.npmjs.com/package/express-session#resave
+    })
+)
+
+// populates req.body with parsed info from forms - if no data from forms will return an empty object {}
+app.use(express.urlencoded({ extended: false }));// extended: false - does not allow nested objects in query strings
+app.use(express.json());// returns middleware that only parses JSON - may or may not need it depending on your project
+
+app.use('/users', userController)
+
+app.use('/sessions', sessionsController)
 
 //-----------------------------------------------
 //      GET SINGLE Blog
