@@ -62,7 +62,7 @@ app.get('/:id', (req, res) => {
   //-----------------------------------------------
   //      NEW Blog
   //-----------------------------------------------
-  app.post('/', (req, res) => {
+  app.post('https://pacific-savannah-73208.herokuapp.com/', (req, res) => {
     Blog.create(req.body, (err, createdBlog)=>{
       res.json(createdBlog)
     })
@@ -71,7 +71,7 @@ app.get('/:id', (req, res) => {
   //-----------------------------------------------
   //      GET ALL BlogS
   //-----------------------------------------------
-  app.get('/', (req, res) => {
+  app.get('https://pacific-savannah-73208.herokuapp.com/', (req, res) => {
     Blog.find({}, (err,foundBlogs) => {
       res.json(foundBlogs)
     })
@@ -80,7 +80,7 @@ app.get('/:id', (req, res) => {
   //-----------------------------------------------
   //      DELETE Blog
   //-----------------------------------------------
-  app.delete('/:id', (req, res) => {
+  app.delete('https://pacific-savannah-73208.herokuapp.com/:id', (req, res) => {
     Blog.findByIdAndRemove(req.params.id, (err, deletedBlog) => {
       res.json(deletedBlog)
     })
@@ -89,7 +89,7 @@ app.get('/:id', (req, res) => {
   //-----------------------------------------------
   //      EDIT Blog
   //-----------------------------------------------
-  app.put('/:id', (req, res) => {
+  app.put('https://pacific-savannah-73208.herokuapp.com/:id', (req, res) => {
     Blog.findByIdAndUpdate(req.params.id, req.body, {new:true}, (err, updatedBlog) => {
       res.json(updatedBlog)
     })
